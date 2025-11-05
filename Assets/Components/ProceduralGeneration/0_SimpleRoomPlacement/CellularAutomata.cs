@@ -1,6 +1,9 @@
 using Components.ProceduralGeneration;
 using Cysharp.Threading.Tasks;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using UnityEngine;
 using VTools.Grid;
@@ -8,71 +11,87 @@ using VTools.Grid;
 [CreateAssetMenu(menuName = "Procedural Generation Method/Cellular Automata")]
 public class CellularAutomata : ProceduralGenerationMethod
 {
-    [SerializeField] private int _noiseDensity = 50;
+    [SerializeField, Range(0, 100), Tooltip("Grass proportion")] private int _noiseDensity = 60;
+    [SerializeField, Range(2, 6), Tooltip("Grass neighbor required")] private int _neighbor = 3;
     [SerializeField] private int _width = 50;
     [SerializeField] private int _height = 50;
-    Dictionary<Cell, string> cellsByTileName;
+    Dictionary<Vector2Int, string> cellsByTileName = new Dictionary<Vector2Int, string>();
+
     protected override async UniTask ApplyGeneration(CancellationToken cancellationToken)
     {
+        InitMap();
+
         for (int i = 0; i < _maxSteps; i++)
         {
-            int Grass = 0;
             cancellationToken.ThrowIfCancellationRequested();
 
-            Cell actualCell = new Cell(i / Grid.Width , i % Grid.Lenght, 1);
+            cellsByTileName.Clear();
+            
+            foreach (Cell cell in Grid.Cells) 
+                CheckCell(cell);
 
-            InitMap(actualCell);
-
-            //Step i de l'algo
-            for (int j = 0; j < 8; j++)
-            {
-                if (j == 4) continue;
-
-                if (Grid.TryGetCellByCoordinates(j / 3, j % 3, out Cell cell))
-                {
-                    if (cell.GridObject.Template.Name == GRASS_TILE_NAME)
-                    {
-                        cellsByTileName.Add(cell, GRASS_TILE_NAME);
-                        Grass++;
-                    }
-                    else
-                    {
-                        cellsByTileName.Add(cell, WATER_TILE_NAME);
-                    }
-                }
-            }
-
-            if (Grass >= 4)
-            {
-            }
-
+            foreach (var cell in cellsByTileName)
+                MakeMap(cell);
 
             await UniTask.Delay(GridGenerator.StepDelay, cancellationToken: cancellationToken);
         }
     }
 
-    private void InitMap(Cell actualCell)
+    private void MakeMap(KeyValuePair<Vector2Int, string> cell)
+    {
+        if (Grid.TryGetCellByCoordinates(cell.Key.x, cell.Key.y, out Cell actualCell))
+        {
+            AddTileToCell(actualCell, cell.Value, true);
+        }
+    }
+
+    private void InitMap()
     {
         int gridSize = Grid.Lenght * Grid.Width;
 
-        for (int i = 0; i < gridSize; i++)
+        for (int y = 0; y < Grid.Lenght; y++)
         {
-            int randTile = RandomService.Range(0, 2);
-
-            switch (randTile)
+            for (int x = 0; x < Grid.Width; x++)
             {
-                case 0:
-                    AddTileToCell(actualCell, GRASS_TILE_NAME, true);
-                    break;
-                case 1:
-                    AddTileToCell(actualCell, WATER_TILE_NAME, true);
-                    break;
+                if (Grid.TryGetCellByCoordinates(x, y, out Cell actualCell))
+                {
+                    int randTile = RandomService.Range(0, 100);
+
+                    switch (randTile > _noiseDensity)
+                    {
+                        case true:
+                            AddTileToCell(actualCell, GRASS_TILE_NAME, true);
+                            break;
+                        case false:
+                            AddTileToCell(actualCell, WATER_TILE_NAME, true);
+                            break;
+                    }
+                }
             }
         }
     }
 
-    private void CheckCell(int index)
+    private void CheckCell(Cell cell)
     {
+        int Grass = 0;
+
+        for (int y = -1; y <= 1; y++)
+        {
+            for (int x = -1; x <= 1; x++)
+            {
+                if (x == 0 && y == 0) continue;
+
+                if (Grid.TryGetCellByCoordinates(cell.Coordinates.x + x, cell.Coordinates.y + y, out Cell sideCell))
+                {
+                    if (sideCell.GridObject.Template.Name == GRASS_TILE_NAME)
+                        Grass++;
+                }
+            }
+        }
         
+        if (Grass >= _neighbor)
+            cellsByTileName[new Vector2Int(cell.Coordinates.x, cell.Coordinates.y)] = GRASS_TILE_NAME;
+        else
+            cellsByTileName[new Vector2Int(cell.Coordinates.x, cell.Coordinates.y)] = WATER_TILE_NAME;
     }
 }

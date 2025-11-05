@@ -11,7 +11,7 @@ namespace Components.ProceduralGeneration
     public abstract class ProceduralGenerationMethod : ScriptableObject
     {
         [Header("Generation")] 
-        [SerializeField] protected int _maxSteps = 1000;
+        [SerializeField, Range(3, 10), Tooltip("Number of steps")] protected int _maxSteps = 1000;
 
         // Injected at runtime, not serialized
         [NonSerialized] public ProceduralGridGenerator GridGenerator;

@@ -88,7 +88,7 @@ namespace Components.ProceduralGeneration.SimpleRoomPlacement
         // -------------------------------------- ROOM ---------------------------------------------
 
         /// Marks the grid cells of the room as occupied
-        private void PlaceRoom(RectInt room)
+        public void PlaceRoom(RectInt room)
         {
             for (int ix = room.xMin; ix < room.xMax; ix++)
             {

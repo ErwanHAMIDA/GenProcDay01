@@ -12,7 +12,7 @@ using VTools.Grid;
 public class CellularAutomata : ProceduralGenerationMethod
 {
     [SerializeField, Range(0, 100), Tooltip("Grass proportion")] private int _noiseDensity = 60;
-    [SerializeField, Range(2, 6), Tooltip("Grass neighbor required")] private int _neighbor = 3;
+    [SerializeField, Range(2, 6), Tooltip("2-3 less water | 4 balance | 5-6 big water")] private int _neighbor = 3;
     [SerializeField] private int _width = 50;
     [SerializeField] private int _height = 50;
     Dictionary<Vector2Int, string> cellsByTileName = new Dictionary<Vector2Int, string>();
@@ -57,7 +57,7 @@ public class CellularAutomata : ProceduralGenerationMethod
                 {
                     int randTile = RandomService.Range(0, 100);
 
-                    switch (randTile > _noiseDensity)
+                    switch (randTile < _noiseDensity)
                     {
                         case true:
                             AddTileToCell(actualCell, GRASS_TILE_NAME, true);
@@ -74,6 +74,7 @@ public class CellularAutomata : ProceduralGenerationMethod
     private void CheckCell(Cell cell)
     {
         int Grass = 0;
+        int Sand = 0;
 
         for (int y = -1; y <= 1; y++)
         {
@@ -85,11 +86,15 @@ public class CellularAutomata : ProceduralGenerationMethod
                 {
                     if (sideCell.GridObject.Template.Name == GRASS_TILE_NAME)
                         Grass++;
+                    if (sideCell.GridObject.Template.Name == WATER_TILE_NAME)
+                        Sand++;
                 }
             }
         }
         
-        if (Grass >= _neighbor)
+        if (Sand == 5 && Grass >= 2 && Grass <= 5)
+            cellsByTileName[new Vector2Int(cell.Coordinates.x, cell.Coordinates.y)] = SAND_TILE_NAME;
+        else if (Grass >= _neighbor)
             cellsByTileName[new Vector2Int(cell.Coordinates.x, cell.Coordinates.y)] = GRASS_TILE_NAME;
         else
             cellsByTileName[new Vector2Int(cell.Coordinates.x, cell.Coordinates.y)] = WATER_TILE_NAME;

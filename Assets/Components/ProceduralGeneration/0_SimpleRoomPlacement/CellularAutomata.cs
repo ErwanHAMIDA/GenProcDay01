@@ -13,6 +13,7 @@ public class CellularAutomata : ProceduralGenerationMethod
 {
     [SerializeField, Range(0, 100), Tooltip("Grass proportion")] private int _noiseDensity = 60;
     [SerializeField, Range(2, 6), Tooltip("2-3 less water | 4 balance | 5-6 big water")] private int _neighbor = 3;
+    [SerializeField, Range(2, 6), Tooltip("Sand proportion")] private int _sandProportion = 5;
     [SerializeField] private int _width = 50;
     [SerializeField] private int _height = 50;
     Dictionary<Vector2Int, string> cellsByTileName = new Dictionary<Vector2Int, string>();
@@ -41,7 +42,7 @@ public class CellularAutomata : ProceduralGenerationMethod
     {
         if (Grid.TryGetCellByCoordinates(cell.Key.x, cell.Key.y, out Cell actualCell))
         {
-            AddTileToCell(actualCell, cell.Value, true);
+            AddTileToCell(actualCell, cell.Value);
         }
     }
 
@@ -49,26 +50,44 @@ public class CellularAutomata : ProceduralGenerationMethod
     {
         int gridSize = Grid.Lenght * Grid.Width;
 
-        for (int y = 0; y < Grid.Lenght; y++)
+        for (int l = 0; l < gridSize; l++)
         {
-            for (int x = 0; x < Grid.Width; x++)
+            if (Grid.TryGetCellByCoordinates(l / Grid.Width, l % Grid.Width, out Cell actualCell))
             {
-                if (Grid.TryGetCellByCoordinates(x, y, out Cell actualCell))
-                {
-                    int randTile = RandomService.Range(0, 100);
+                int randTile = RandomService.Range(0, 100);
 
-                    switch (randTile < _noiseDensity)
-                    {
-                        case true:
-                            AddTileToCell(actualCell, GRASS_TILE_NAME, true);
-                            break;
-                        case false:
-                            AddTileToCell(actualCell, WATER_TILE_NAME, true);
-                            break;
-                    }
+                switch (randTile < _noiseDensity)
+                {
+                    case true:
+                        AddTileToCell(actualCell, GRASS_TILE_NAME);
+                        break;
+                    case false:
+                        AddTileToCell(actualCell, WATER_TILE_NAME);
+                        break;
                 }
             }
         }
+
+        //for (int y = 0; y < Grid.Lenght; y++)
+        //{
+        //    for (int x = 0; x < Grid.Width; x++)
+        //    {
+        //        if (Grid.TryGetCellByCoordinates(x, y, out Cell actualCell))
+        //        {
+        //            int randTile = RandomService.Range(0, 100);
+
+        //            switch (randTile < _noiseDensity)
+        //            {
+        //                case true:
+        //                    AddTileToCell(actualCell, GRASS_TILE_NAME, true);
+        //                    break;
+        //                case false:
+        //                    AddTileToCell(actualCell, WATER_TILE_NAME, true);
+        //                    break;
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     private void CheckCell(Cell cell)
@@ -76,6 +95,7 @@ public class CellularAutomata : ProceduralGenerationMethod
         int Grass = 0;
         int Sand = 0;
 
+        //How to one loop ?
         for (int y = -1; y <= 1; y++)
         {
             for (int x = -1; x <= 1; x++)
@@ -92,7 +112,7 @@ public class CellularAutomata : ProceduralGenerationMethod
             }
         }
         
-        if (Sand == 5 && Grass >= 2 && Grass <= 5)
+        if (Sand == _sandProportion && Grass >= 2 && Grass <= 5)
             cellsByTileName[new Vector2Int(cell.Coordinates.x, cell.Coordinates.y)] = SAND_TILE_NAME;
         else if (Grass >= _neighbor)
             cellsByTileName[new Vector2Int(cell.Coordinates.x, cell.Coordinates.y)] = GRASS_TILE_NAME;

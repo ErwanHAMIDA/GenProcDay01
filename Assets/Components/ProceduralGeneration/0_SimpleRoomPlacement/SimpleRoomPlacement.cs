@@ -97,7 +97,7 @@ namespace Components.ProceduralGeneration.SimpleRoomPlacement
                     if (!Grid.TryGetCellByCoordinates(ix, iy, out var cell))
                         continue;
 
-                    AddTileToCell(cell, ROOM_TILE_NAME, true);
+                    AddTileToCell(cell, ROOM_TILE_NAME);
                 }
             }
         }
@@ -134,7 +134,7 @@ namespace Components.ProceduralGeneration.SimpleRoomPlacement
                 if (!Grid.TryGetCellByCoordinates(x, y, out var cell))
                     continue;
 
-                AddTileToCell(cell, CORRIDOR_TILE_NAME, true);
+                AddTileToCell(cell, CORRIDOR_TILE_NAME);
             }
         }
 
@@ -149,7 +149,7 @@ namespace Components.ProceduralGeneration.SimpleRoomPlacement
                 if (!Grid.TryGetCellByCoordinates(x, y, out var cell))
                     continue;
 
-                AddTileToCell(cell, CORRIDOR_TILE_NAME, true);
+                AddTileToCell(cell, CORRIDOR_TILE_NAME);
             }
         }
 

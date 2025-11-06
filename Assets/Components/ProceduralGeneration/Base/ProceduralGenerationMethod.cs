@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VTools.Grid;
 using VTools.RandomService;
@@ -17,6 +17,9 @@ namespace Components.ProceduralGeneration
         [NonSerialized] public ProceduralGridGenerator GridGenerator;
         [NonSerialized] protected RandomService RandomService;
         [NonSerialized] private CancellationTokenSource _cancellationTokenSource;
+        private GridObjectTemplate sandTileTemplate;
+        private GridObjectTemplate waterTileTemplate;
+        private GridObjectTemplate grassTileTemplate;
 
         protected VTools.Grid.Grid Grid => GridGenerator.Grid;
 
@@ -27,12 +30,17 @@ namespace Components.ProceduralGeneration
         protected const string ROCK_TILE_NAME = "Rock";
         protected const string SAND_TILE_NAME = "Sand";
 
+        protected string ACTUAL_TILE_NAME;
+
         // -------------------------------------- BASE ----------------------------------------------------
-        
+
         public void Initialize(ProceduralGridGenerator gridGenerator, RandomService randomService)
         {
             GridGenerator = gridGenerator;
             RandomService = randomService;
+            grassTileTemplate = ScriptableObjectDatabase.GetScriptableObject<GridObjectTemplate>(GRASS_TILE_NAME);
+            sandTileTemplate = ScriptableObjectDatabase.GetScriptableObject<GridObjectTemplate>(SAND_TILE_NAME);
+            waterTileTemplate = ScriptableObjectDatabase.GetScriptableObject<GridObjectTemplate>(WATER_TILE_NAME);
         }
 
         public async UniTask Generate()
@@ -90,10 +98,41 @@ namespace Components.ProceduralGeneration
             return true;
         }
         
-        protected void AddTileToCell(Cell cell, string tileName, bool overrideExistingObjects)
+        protected void AddTileToCell(Cell cell, string tileName)
         {
-            var tileTemplate = ScriptableObjectDatabase.GetScriptableObject<GridObjectTemplate>(tileName);
-            GridGenerator.AddGridObjectToCell(cell, tileTemplate, overrideExistingObjects);
+            if (ACTUAL_TILE_NAME == tileName)
+            {
+                switch (tileName)
+                {
+                    case GRASS_TILE_NAME:
+                        GridGenerator.AddGridObjectToCell(cell, grassTileTemplate, false);
+                        break;
+                    case WATER_TILE_NAME:
+                        GridGenerator.AddGridObjectToCell(cell, waterTileTemplate, false);
+                        break;
+                    case SAND_TILE_NAME:
+                        GridGenerator.AddGridObjectToCell(cell, sandTileTemplate, false);
+                        break;
+                }
+            }
+            else
+            {
+                switch (tileName)
+                {
+                    case GRASS_TILE_NAME:
+                        GridGenerator.AddGridObjectToCell(cell, grassTileTemplate, true);
+                        break;
+                    case WATER_TILE_NAME:
+                        GridGenerator.AddGridObjectToCell(cell, waterTileTemplate, true);
+                        break;
+                    case SAND_TILE_NAME:
+                        GridGenerator.AddGridObjectToCell(cell, sandTileTemplate, true);
+                        break;
+                }
+            }
+
+            
+
         }
     }
 }

@@ -68,26 +68,7 @@ public class CellularAutomata : ProceduralGenerationMethod
             }
         }
 
-        //for (int y = 0; y < Grid.Lenght; y++)
-        //{
-        //    for (int x = 0; x < Grid.Width; x++)
-        //    {
-        //        if (Grid.TryGetCellByCoordinates(x, y, out Cell actualCell))
-        //        {
-        //            int randTile = RandomService.Range(0, 100);
-
-        //            switch (randTile < _noiseDensity)
-        //            {
-        //                case true:
-        //                    AddTileToCell(actualCell, GRASS_TILE_NAME, true);
-        //                    break;
-        //                case false:
-        //                    AddTileToCell(actualCell, WATER_TILE_NAME, true);
-        //                    break;
-        //            }
-        //        }
-        //    }
-        //}
+        
     }
 
     private void CheckCell(Cell cell)

@@ -59,6 +59,8 @@ public class FastNoiseLite
     private const short INLINE = 256; // MethodImplOptions.AggressiveInlining;
     private const short OPTIMISE = 512; // MethodImplOptions.AggressiveOptimization;
 
+    public static FastNoiseLite Instance { get; private set; }
+
     public enum NoiseType 
     { 
         OpenSimplex2,

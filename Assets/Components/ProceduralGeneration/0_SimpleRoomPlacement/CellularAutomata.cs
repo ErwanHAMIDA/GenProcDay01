@@ -16,7 +16,7 @@ public class CellularAutomata : ProceduralGenerationMethod
     [SerializeField, Range(2, 6), Tooltip("Sand proportion")] private int _sandProportion = 5;
     [SerializeField] private int _width = 50;
     [SerializeField] private int _height = 50;
-    Dictionary<Vector2Int, string> cellsByTileName = new Dictionary<Vector2Int, string>();
+    private Dictionary<Vector2Int, string> cellsByTileName = new Dictionary<Vector2Int, string>();
 
     protected override async UniTask ApplyGeneration(CancellationToken cancellationToken)
     {
@@ -111,7 +111,7 @@ public class CellularAutomata : ProceduralGenerationMethod
                 }
             }
         }
-        
+
         if (Sand == _sandProportion && Grass >= 2 && Grass <= 5)
             cellsByTileName[new Vector2Int(cell.Coordinates.x, cell.Coordinates.y)] = SAND_TILE_NAME;
         else if (Grass >= _neighbor)

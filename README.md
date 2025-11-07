@@ -5,10 +5,10 @@
 <summary>Details</summary>
 
   - [Introduction](#introduction)
-  - [GetStarted](#GetStarted)
-    - [How to install](#How to install)
-    - [Using Scriptable Object](#UsingScriptableObject)
-    - [How to use editable variables](#Howtouseeditablevariable)
+  - [GetStarted](#Get-Started)
+    - [How to install](#How-to-install)
+    - [Using Scriptable Object](#Using-Scriptable-Object)
+    - [How to use editable variables](#How-to-use-editable-variable)
   - [Features](#Features)
   - [History](#History)
   - [Documentation](#Documentation)

@@ -5,9 +5,23 @@
 <summary>Details</summary>
 
   - [Introduction](#introduction)
+  - [GetStarted](#GetStarted)
+    - [How to install](#Howtoinstall)
+    - [Using Scriptable Object](#UsingScriptableObject)
+    - [How to use editable variables](#Howtouseeditablevariable)
+  - [Features](#Features)
+  - [History](#History)
+  - [Documentation](#Documentation)
+  - [Misusing](#Misusing)
+  - [License](#License)
 
 ## Introduction
 (What is it ? What I used ?)
+
+## Get Started 
+## How to install
+## Using Scriptable Object
+## How to use editable variables
 
 ## Features
 (Quick overview with gif)
@@ -19,12 +33,7 @@
 (link on used open source repo + brackeys video)
 
 ## Misusing
-The bad values
+The bad values / uses
 
-## Get Started 
-## How to install
-## Using Scriptable Object
-## How to use editable variables
-
-##License
+## License
 [Voir la licence](LICENSE)

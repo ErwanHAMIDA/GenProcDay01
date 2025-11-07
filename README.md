@@ -21,4 +21,4 @@ The bad values
 ## How to use editable variables
 
 ##License
-(Link to license file)
+[Voir la licence](LICENSE)

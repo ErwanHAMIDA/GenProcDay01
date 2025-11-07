@@ -6,7 +6,7 @@
 
   - [Introduction](#introduction)
   - [GetStarted](#GetStarted)
-    - [How to install](#Howtoinstall)
+    - [How to install](#How_to_install)
     - [Using Scriptable Object](#UsingScriptableObject)
     - [How to use editable variables](#Howtouseeditablevariable)
   - [Features](#Features)

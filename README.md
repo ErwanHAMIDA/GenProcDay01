@@ -10,9 +10,8 @@
     - [Using Scriptable Object](#Using-Scriptable-Object)
     - [How to use editable variables](#How-to-use-editable-variable)
   - [Features](#Features)
-  - [History](#History)
   - [Documentation](#Documentation)
-  - [Misusing](#Misusing)
+  - [Misusing / Limitations](#Misusing-/-Limitations)
   - [License](#License)
 
 ## Introduction
@@ -48,13 +47,12 @@ If you download this repo, you don't normally have to install anything. However,
 ## Features
 (Quick overview with gif)
 
-## History
-(Context)
-
 ## Documentation
-(link on used open source repo + brackeys video)
+(Grid, Cell and ProceduralGenerationMethod Architecture)
+(Specify algorithm utility)
+(How to add new algorithm)
 
-## Misusing
+## Misusing / Limitations
 The bad values / uses
 
 ## License

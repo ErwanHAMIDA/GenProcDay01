@@ -20,6 +20,13 @@
 
 ## Get Started 
 ## How to install
+- [Download UnityHub](https://unity.com/download)
+- Install one Unity version
+- Create and open your project
+- [Copy this Unitask link] https://github.com/Cysharp/UniTask
+- <img width="1891" height="927" alt="image" src="https://github.com/user-attachments/assets/ed60363e-7f59-48b0-a304-6d8213f1e436" />
+
+- Go on Unity Editor package Manager
 ## Using Scriptable Object
 ## How to use editable variables
 

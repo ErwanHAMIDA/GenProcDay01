@@ -16,9 +16,11 @@
   - [License](#License)
 
 ## Introduction
-This is a School Project about Procedural Generation on Unity. Unity doesn't manage pretty well asynchronous programmation so I need to use [UniTask](https://github.com/Cysharp/UniTask), "an open source library which provides an efficient async/await integration to Unity".
+Squalaland is a game made for a School Project about Procedural Generation on Unity. Unity doesn't manage pretty well asynchronous programmation so I need to use [UniTask](https://github.com/Cysharp/UniTask), "an open source library which provides an efficient async/await integration to Unity".
 
-For Procedural Generation, I used Binary Space Partition, Cellular Automaton and Perlin / OpenSimplex2S Noises. Noises created by [FastNoise](https://github.com/Auburn/FastNoiseLite), "an extremely portable open source noise generation library with a large selection of noise algorithms"
+For Procedural Generation, I used Binary Space Partition for dungeon rooms and Perlin / OpenSimplex2S Noises for outside map. Noises created by [FastNoise](https://github.com/Auburn/FastNoiseLite), "an extremely portable open source noise generation library with a large selection of noise algorithms".
+
+We have one constraints : the theme of the game : "below the surface" so we made a dungeon under the ground.
 
 ## Get Started 
 ## How to install

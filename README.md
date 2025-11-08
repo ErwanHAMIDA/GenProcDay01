@@ -2,7 +2,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 <details>
-<summary>Details</summary>
+<summary>Details
 
   - [Introduction](#introduction)
   - [Get Started](#Get-Started)
@@ -13,7 +13,7 @@
   - [Documentation](#Documentation)
   - [Misusing / Limitations](#Misusing-/-Limitations)
   - [License](#License)
-
+</summary>
 ## Introduction
 <img width="387" height="291" alt="image" src="https://github.com/user-attachments/assets/98b02619-a580-4fc3-9fc4-1c87eba28281" />
 

@@ -17,7 +17,7 @@
 ## Introduction
 <img width="387" height="291" alt="image" src="https://github.com/user-attachments/assets/98b02619-a580-4fc3-9fc4-1c87eba28281" />
 
-Squalaland is a RPG game with zelda CDI references, made for a School Project about Procedural Generation on Unity. Unity doesn't manage pretty well asynchronous programmation so I need to use [UniTask](https://github.com/Cysharp/UniTask), "an open source library which provides an efficient async/await integration to Unity".
+Squalaland is a pokemon like RPG game with zelda CDI references as monsters. It was made for a School Project about Procedural Generation on Unity. Unity doesn't manage pretty well asynchronous programmation so I need to use [UniTask](https://github.com/Cysharp/UniTask), "an open source library which provides an efficient async/await integration to Unity".
 
 For Procedural Generation, I used Binary Space Partition for dungeon rooms and Perlin / OpenSimplex2S Noises for outside map. Noises created by [FastNoise](https://github.com/Auburn/FastNoiseLite), "an extremely portable open source noise generation library with a large selection of noise algorithms".
 I plan to add procedural Names generator thanks to [Markov Name Generator](https://github.com/Tw1ddle/MarkovNameGenerator?tab=readme-ov-file) and personally cooked procedural Spells Generator. So in this video game, player won't have the same spells for each sessions ! That'll make it harder. 

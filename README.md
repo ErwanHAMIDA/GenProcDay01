@@ -50,15 +50,26 @@ If you download this repo, you don't normally have to install anything. However,
 ## Documentation
 (Grid, Cell and ProceduralGenerationMethod Architecture)
 (Specify algorithm utility)
-Noise Script :
-ApplyGeneration() : The whole logic about making the map generation with noise. First Init the noise parameters then set each cells' tiles type and build the map.
+- Noise Script :
+- ApplyGeneration() : The whole logic about making the map generation with noise. First Init the noise parameters then set each cells' tiles type and build the map.
 <img width="798" height="521" alt="image" src="https://github.com/user-attachments/assets/4aa067ef-0943-4f2e-b780-bf1af4d7c1b0" />
 
-InitNoise() : 
+- InitNoise() : 
 Don't worry about this part, you can directly change the values in the Unity inspector. However, if some parameter is missing, add it here.
 I recommand you to use this preview tools to make your own noise and then change values in Unity inspector
 <img width="572" height="308" alt="image" src="https://github.com/user-attachments/assets/1308bb11-bfad-408d-ad28-27bde13c967b" />
 <img width="522" height="801" alt="image" src="https://github.com/user-attachments/assets/9371d789-41b3-4627-aaba-a4a4b3653d86" />
+
+- MakeMap() :
+The function TryGetCellByCoordinates() is a Grid function which check if the cell exist at the specified coordinates. Then, if it's a valid place to create tile (contained by the Grid), the AddTileToCell create specific tile (cell.Value can be set GRASS_TILE_NAME for example)
+<img width="730" height="143" alt="image" src="https://github.com/user-attachments/assets/75b8ec2e-ae08-4425-b501-88a6347a72d6" />
+
+- CheckCell() :
+This function is WIP !! You may change the formula because it works but not as expected.
+You can modify the grass and water quantity, using the Unity inspector values (cf. screenshot)
+<img width="866" height="180" alt="image" src="https://github.com/user-attachments/assets/52c8d676-b9e0-4741-a990-1ca12ab2c60d" />
+<img width="528" height="757" alt="image" src="https://github.com/user-attachments/assets/bf756adb-f1cc-48f5-90bc-94e7f3c2168a" />
+
 
 
 (How to add new algorithm)

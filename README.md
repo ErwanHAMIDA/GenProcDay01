@@ -16,10 +16,13 @@
   - [License](#License)
 
 ## Introduction
-(What is it ? What I used ?)
+This is a School Project about Procedural Generation on Unity. Unity doesn't manage pretty well asynchronous programmation so I need to use [UniTask](https://github.com/Cysharp/UniTask), "an open source library which provides an efficient async/await integration to Unity".
+
+For Procedural Generation, I used Binary Space Partition, Cellular Automaton and Perlin / OpenSimplex2S Noises. Noises created by [FastNoise](https://github.com/Auburn/FastNoiseLite), "an extremely portable open source noise generation library with a large selection of noise algorithms"
 
 ## Get Started 
 ## How to install
+If you download this repo, you don't normally have to install anything. However, if you have any issue, follow these steps :
 - [Download UnityHub](https://unity.com/download)
 - Install one Unity version
 - Create and open your project
@@ -33,7 +36,7 @@
 - Install UniTask
   <img width="1881" height="942" alt="image" src="https://github.com/user-attachments/assets/90596d99-89f8-4239-bead-6ae489d08ad2" />
 
-- Well done ! You can use UniTask for now !
+- Well done ! Now, you can use UniTask and start seeing what can you done with this tool project ! Create a new Level to make your own.
 ## Using Scriptable Object
 ## How to use editable variables
 

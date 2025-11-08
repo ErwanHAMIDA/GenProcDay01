@@ -65,10 +65,35 @@ The function TryGetCellByCoordinates() is a Grid function which check if the cel
 <img width="730" height="143" alt="image" src="https://github.com/user-attachments/assets/75b8ec2e-ae08-4425-b501-88a6347a72d6" />
 
 - CheckCell() :
-This function is WIP !! You may change the formula because it works but not as expected.
+This function is WIP !! You may change the formula because it works but not as I expected.
 You can modify the grass and water quantity, using the Unity inspector values (cf. screenshot)
 <img width="866" height="180" alt="image" src="https://github.com/user-attachments/assets/52c8d676-b9e0-4741-a990-1ca12ab2c60d" />
 <img width="528" height="757" alt="image" src="https://github.com/user-attachments/assets/bf756adb-f1cc-48f5-90bc-94e7f3c2168a" />
+
+Cellular Automaton :
+
+- InitMap() :
+It's a simple white noise on cells contained by Grid
+<img width="850" height="423" alt="image" src="https://github.com/user-attachments/assets/b8c3c426-2030-44bb-b140-bbe8647518a6" />
+
+- CheckCell() :
+Check each cells' neighborhood. Depending on the type of neighbor cells, it'll change the type of the current cell.
+<img width="1011" height="552" alt="image" src="https://github.com/user-attachments/assets/1eb617e5-e813-4af4-a3bc-cc7e8eb11bee" />
+
+
+- ProceduralGenerationMethod class :
+- Initialize() :
+GetScriptableObject once for each different tile instead of getting these each step allows to increase the algorithm performance by approximatively 250% !
+<img width="938" height="162" alt="image" src="https://github.com/user-attachments/assets/b1843e50-d6c5-4154-9ba9-d6385185a157" />
+
+- CanPlaceRoom() :
+This one is used for Binary Space Partition. Allows (or not) to split the room by sending boolean.
+<img width="1262" height="403" alt="image" src="https://github.com/user-attachments/assets/8599bf20-8bcf-4635-957a-e86e9c61c9d4" />
+
+- AddTileToCeil() :
+This method doesn't replace an already existing cell with a same tile. If it's different, it does.
+Here's a little DRY so it may be improved
+<img width="612" height="522" alt="image" src="https://github.com/user-attachments/assets/bd0a4142-9592-4455-a613-2e645cf88aa3" />
 
 
 

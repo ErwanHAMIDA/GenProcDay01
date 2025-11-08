@@ -5,7 +5,7 @@
 <summary>Details</summary>
 
   - [Introduction](#introduction)
-  - [GetStarted](#Get-Started)
+  - [Get Started](#Get-Started)
     - [How to install](#How-to-install)
     - [Using Scriptable Object](#Using-Scriptable-Object)
     - [How to use editable variables](#How-to-use-editable-variable)

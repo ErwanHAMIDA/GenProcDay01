@@ -50,6 +50,17 @@ If you download this repo, you don't normally have to install anything. However,
 ## Documentation
 (Grid, Cell and ProceduralGenerationMethod Architecture)
 (Specify algorithm utility)
+Noise Script :
+ApplyGeneration() : The whole logic about making the map generation with noise. First Init the noise parameters then set each cells' tiles type and build the map.
+<img width="798" height="521" alt="image" src="https://github.com/user-attachments/assets/4aa067ef-0943-4f2e-b780-bf1af4d7c1b0" />
+
+InitNoise() : 
+Don't worry about this part, you can directly change the values in the Unity inspector. However, if some parameter is missing, add it here.
+I recommand you to use this preview tools to make your own noise and then change values in Unity inspector
+<img width="572" height="308" alt="image" src="https://github.com/user-attachments/assets/1308bb11-bfad-408d-ad28-27bde13c967b" />
+<img width="522" height="801" alt="image" src="https://github.com/user-attachments/assets/9371d789-41b3-4627-aaba-a4a4b3653d86" />
+
+
 (How to add new algorithm)
 
 ## Misusing / Limitations

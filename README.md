@@ -23,10 +23,17 @@
 - [Download UnityHub](https://unity.com/download)
 - Install one Unity version
 - Create and open your project
-- [Copy this Unitask link] https://github.com/Cysharp/UniTask
+- On the Unity Editor, go to Edit -> Project Settings -> Package Manager and like the screen below copy/paste these then apply :
+  Name : package.openupm.com
+  URL : https://package.openupm.com
+  Scope(s) : com.cysharp.unitask
 - <img width="1891" height="927" alt="image" src="https://github.com/user-attachments/assets/ed60363e-7f59-48b0-a304-6d8213f1e436" />
 
-- Go on Unity Editor package Manager
+- Go on Unity Editor package Manager -> My registries
+- Install UniTask
+- <img width="1881" height="942" alt="image" src="https://github.com/user-attachments/assets/90596d99-89f8-4239-bead-6ae489d08ad2" />
+
+- Well done ! You can use UniTask for now !
 ## Using Scriptable Object
 ## How to use editable variables
 

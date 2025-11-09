@@ -52,7 +52,7 @@ public class CellularAutomata : ProceduralGenerationMethod
 
         for (int l = 0; l < gridSize; l++)
         {
-            if (Grid.TryGetCellByCoordinates(l / Grid.Width, l % Grid.Width, out Cell actualCell))
+            if (Grid.TryGetCellByCoordinates(l / Grid.Width, l % Grid.Lenght, out Cell actualCell))
             {
                 int randTile = RandomService.Range(0, 100);
 
@@ -67,8 +67,6 @@ public class CellularAutomata : ProceduralGenerationMethod
                 }
             }
         }
-
-        
     }
 
     private void CheckCell(Cell cell)

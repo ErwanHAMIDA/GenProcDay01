@@ -12,6 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da0f1abf34668744be53fea026d1b45, type: 3}
   m_Name: NoiseManager
   m_EditorClassIdentifier: 
-  _maxSteps: 1000
+  _maxSteps: 10
+  _frequency: 0.1
   _noiseDensity: 60
-  _noiseSeed: 50
+  _fracOctave: 3
+  _fracLacunarity: 3
+  _fracGain: 3
+  _fracWeightedStrength: 3
+  _amplitude: 0.5
+  _grassQuantity: 0.3
+  _waterQuantity: 0.3
+  _grassHeight: 0.5
+  _waterHeight: 0.5
+  _sandHeight: 0.5
+  _noiseType: 1
+  _rotationType: 2
+  _cellularDistance: 0
+  _cellJitter: 2
+  _pingpongStrength: 2
